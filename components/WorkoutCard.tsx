@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Workout } from "@/lib/types";
 import WorkoutStats from "./WorkoutStats";
+import Image from "next/image";
 
 
 type WorkoutCardProps = {
@@ -13,13 +14,13 @@ export default function WorkoutCard({ workout }: WorkoutCardProps) {
       href={`/workout/${workout.id}`}
       className="group block overflow-hidden rounded-2xl border border-base-300 bg-base-200 transition hover:-translate-y-1 hover:border-primary/60"
     >
-            <div className="h-48 overflow-hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+      <div className="relative h-48 overflow-hidden">
+        <Image
           src={workout.image}
           alt={workout.name}
-          loading="lazy"
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className="object-cover transition duration-500 group-hover:scale-105"
         />
       </div>
 

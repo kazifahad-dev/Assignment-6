@@ -19,7 +19,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${inter.variable} ${oswald.variable}`}>
+     <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${inter.variable} ${oswald.variable}`}
+    >
       <body className="flex min-h-screen flex-col">
         <Providers>
         <Navbar />

@@ -9,6 +9,7 @@ import WorkoutStats from "@/components/WorkoutStats";
 import { useWorkouts } from "@/lib/useWorkouts";
 import type { Workout } from "@/lib/types"; 
 import { usePlan } from "@/context/PlanContext";
+import Image from "next/image";
 
 type Tab = "plan" | "saved";
 
@@ -166,12 +167,15 @@ export default function MyPlanPage() {
                 className="flex flex-col gap-4 rounded-2xl border border-base-300 bg-base-200 p-4 sm:flex-row sm:items-center sm:justify-between"
               >
                 <div className="flex items-center gap-4">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={w.image}
-                    alt={w.name}
-                    className="h-20 w-36 shrink-0 rounded-lg object-cover"
-                  />
+                                    <div className="relative h-20 w-36 shrink-0 overflow-hidden rounded-lg">
+                    <Image
+                      src={w.image}
+                      alt={w.name}
+                      fill
+                      sizes="144px"
+                      className="object-cover"
+                    />
+                  </div>
                   <div className="min-w-0">
                     
                     <h2

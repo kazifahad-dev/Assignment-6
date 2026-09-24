@@ -9,6 +9,7 @@ import Spinner from "@/components/Spinner";
 import { ApiError, getWorkout } from "@/lib/api";
 import type { Workout } from "@/lib/types";
 import { MAX_PLAN, usePlan } from "@/context/PlanContext";
+import Image from "next/image";
 
 type State = {
   id: string;
@@ -99,13 +100,21 @@ export default function WorkoutDetailsPage() {
     
     <div className="grid gap-10 lg:grid-cols-2">
       
-      <div>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={workout.image}
-          alt={workout.name}
-          className="aspect-3/4 w-full rounded-2xl object-cover lg:sticky lg:top-24"
-        />
+        <div>
+                  <div>
+        <div className="lg:sticky lg:top-24">
+          <div className="relative aspect-3/4 w-full overflow-hidden rounded-2xl">
+            <Image
+              src={workout.image}
+              alt={workout.name}
+              fill
+              priority
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </div>
       </div>
 
      
