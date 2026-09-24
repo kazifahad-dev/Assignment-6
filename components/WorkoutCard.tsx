@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Workout } from "@/lib/types";
 import WorkoutStats from "./WorkoutStats";
-import Image from "next/image";
+
 
 type WorkoutCardProps = {
   workout: Workout;
