@@ -1,15 +1,25 @@
+"use client";
+
+import { useWorkouts } from "@/lib/useWorkouts";
+
 export default function HomePage() {
+  const { workouts, loading, error } = useWorkouts();
+
+  if (loading) return <p>Loading…</p>;
+  if (error) return <p>Error: {error}</p>;
+
   return (
     <div>
-      <h1 className="font-display text-5xl font-bold uppercase">
-        Train with intent.
+      <h1 className="font-display text-3xl font-bold uppercase">
+        {workouts.length} workouts loaded
       </h1>
-      <p className="mt-4 text-muted">Theme test</p>
-
-      {/* btn, btn-primary, badge daisyUI-র ক্লাস */}
-      <button className="btn btn-primary mt-6">Test button</button>
-      <span className="badge badge-primary ml-3">4</span>
-      <span className="badge badge-outline ml-2">2</span>
+      <ul className="mt-4 space-y-1 text-muted">
+        {workouts.map((w) => (
+          <li key={w.id}>
+            {w.id}. {w.name} — {w.duration} min
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
