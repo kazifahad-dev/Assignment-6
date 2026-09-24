@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { usePlan } from "@/context/PlanContext";
 import Logo from "./Logo";
 
 const LINKS = [
@@ -14,8 +15,10 @@ export default function Navbar() {
   const pathname = usePathname();
 
   
-  const planCount = 0;
-  const savedCount = 0;
+
+  const { plan, saved } = usePlan();
+  const planCount = plan.length;
+  const savedCount = saved.length;
 
   
   const isActive = (href: string) =>
